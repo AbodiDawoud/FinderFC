@@ -7,7 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD053CD62F7882B800351FE2 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CD22F7882B800351FE2 /* App.swift */; };
+		BD053CD72F7882B800351FE2 /* TemplateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CD32F7882B800351FE2 /* TemplateLibrary.swift */; };
+		BD053CD82F7882B800351FE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CD42F7882B800351FE2 /* ContentView.swift */; };
+		BD053CD92F7882B800351FE2 /* TemplateDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CD52F7882B800351FE2 /* TemplateDefinition.swift */; };
+		BD053CDA2F7882B800351FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD053CD02F7882B800351FE2 /* Assets.xcassets */; };
+		BD053CE72F7886AB00351FE2 /* Extensions+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CE62F7886AB00351FE2 /* Extensions+.swift */; };
+		BD053CEC2F7886EC00351FE2 /* TemplateRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CEB2F7886EC00351FE2 /* TemplateRenderer.swift */; };
+		BD053CEE2F7886F400351FE2 /* SharedTemplateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CED2F7886F400351FE2 /* SharedTemplateStore.swift */; };
+		BD053CF02F78871D00351FE2 /* IconCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CEF2F78871D00351FE2 /* IconCatalog.swift */; };
 		BD4FE8F72ED906F500240ABD /* Exten.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BD4FE8EF2ED906F500240ABD /* Exten.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BDE576DC2F799A9700FC8E53 /* TemplateDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CD52F7882B800351FE2 /* TemplateDefinition.swift */; };
+		BDE576DD2F799AA100FC8E53 /* SharedTemplateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CED2F7886F400351FE2 /* SharedTemplateStore.swift */; };
+		BDE576DE2F799AB000FC8E53 /* Extensions+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CE62F7886AB00351FE2 /* Extensions+.swift */; };
+		BDE576DF2F799ACF00FC8E53 /* TemplateRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CEB2F7886EC00351FE2 /* TemplateRenderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +48,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BD053CD02F7882B800351FE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BD053CD12F7882B800351FE2 /* FinderFileCreator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinderFileCreator.entitlements; sourceTree = "<group>"; };
+		BD053CD22F7882B800351FE2 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		BD053CD32F7882B800351FE2 /* TemplateLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateLibrary.swift; sourceTree = "<group>"; };
+		BD053CD42F7882B800351FE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BD053CD52F7882B800351FE2 /* TemplateDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDefinition.swift; sourceTree = "<group>"; };
+		BD053CE62F7886AB00351FE2 /* Extensions+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+.swift"; sourceTree = "<group>"; };
+		BD053CEB2F7886EC00351FE2 /* TemplateRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateRenderer.swift; sourceTree = "<group>"; };
+		BD053CED2F7886F400351FE2 /* SharedTemplateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTemplateStore.swift; sourceTree = "<group>"; };
+		BD053CEF2F78871D00351FE2 /* IconCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCatalog.swift; sourceTree = "<group>"; };
 		BD4FE8DC2ED905C500240ABD /* FinderFileCreator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinderFileCreator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD4FE8EF2ED906F500240ABD /* Exten.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Exten.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BD4FE8F82ED906F500240ABD /* Exceptions for "Exten" folder in "Exten" target */ = {
+		BD4FE8F82ED906F500240ABD /* Exceptions for "Extension" folder in "Exten" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -50,17 +73,12 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BD4FE8DE2ED905C500240ABD /* FinderFileCreator */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FinderFileCreator;
-			sourceTree = "<group>";
-		};
-		BD4FE8F02ED906F500240ABD /* Exten */ = {
+		BD4FE8F02ED906F500240ABD /* Extension */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				BD4FE8F82ED906F500240ABD /* Exceptions for "Exten" folder in "Exten" target */,
+				BD4FE8F82ED906F500240ABD /* Exceptions for "Extension" folder in "Exten" target */,
 			);
-			path = Exten;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -83,11 +101,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD053CE42F7885DE00351FE2 /* FinderFileCreator */ = {
+			isa = PBXGroup;
+			children = (
+				BD053CE52F7885E800351FE2 /* Resources */,
+				BD053CE82F7886C100351FE2 /* Models */,
+				BD053CEB2F7886EC00351FE2 /* TemplateRenderer.swift */,
+				BD053CED2F7886F400351FE2 /* SharedTemplateStore.swift */,
+				BD053CD32F7882B800351FE2 /* TemplateLibrary.swift */,
+				BD053CD42F7882B800351FE2 /* ContentView.swift */,
+				BD053CD22F7882B800351FE2 /* App.swift */,
+			);
+			path = FinderFileCreator;
+			sourceTree = "<group>";
+		};
+		BD053CE52F7885E800351FE2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BD053CD02F7882B800351FE2 /* Assets.xcassets */,
+				BD053CD12F7882B800351FE2 /* FinderFileCreator.entitlements */,
+				BD053CE62F7886AB00351FE2 /* Extensions+.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BD053CE82F7886C100351FE2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BD053CD52F7882B800351FE2 /* TemplateDefinition.swift */,
+				BD053CEF2F78871D00351FE2 /* IconCatalog.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		BD4FE8D32ED905C500240ABD = {
 			isa = PBXGroup;
 			children = (
-				BD4FE8DE2ED905C500240ABD /* FinderFileCreator */,
-				BD4FE8F02ED906F500240ABD /* Exten */,
+				BD053CE42F7885DE00351FE2 /* FinderFileCreator */,
+				BD4FE8F02ED906F500240ABD /* Extension */,
 				BD4FE8DD2ED905C500240ABD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,9 +169,6 @@
 			dependencies = (
 				BD4FE8F62ED906F500240ABD /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				BD4FE8DE2ED905C500240ABD /* FinderFileCreator */,
-			);
 			name = FinderFileCreator;
 			packageProductDependencies = (
 			);
@@ -141,7 +189,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				BD4FE8F02ED906F500240ABD /* Exten */,
+				BD4FE8F02ED906F500240ABD /* Extension */,
 			);
 			name = Exten;
 			packageProductDependencies = (
@@ -193,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD053CDA2F7882B800351FE2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +259,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD053CD62F7882B800351FE2 /* App.swift in Sources */,
+				BD053CD72F7882B800351FE2 /* TemplateLibrary.swift in Sources */,
+				BD053CE72F7886AB00351FE2 /* Extensions+.swift in Sources */,
+				BD053CD82F7882B800351FE2 /* ContentView.swift in Sources */,
+				BD053CEE2F7886F400351FE2 /* SharedTemplateStore.swift in Sources */,
+				BD053CD92F7882B800351FE2 /* TemplateDefinition.swift in Sources */,
+				BD053CF02F78871D00351FE2 /* IconCatalog.swift in Sources */,
+				BD053CEC2F7886EC00351FE2 /* TemplateRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE576DD2F799AA100FC8E53 /* SharedTemplateStore.swift in Sources */,
+				BDE576DE2F799AB000FC8E53 /* Extensions+.swift in Sources */,
+				BDE576DC2F799A9700FC8E53 /* TemplateDefinition.swift in Sources */,
+				BDE576DF2F799ACF00FC8E53 /* TemplateRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,11 +415,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = FinderFileCreator/FinderFileCreator.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FinderFileCreator/Resources/FinderFileCreator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 48S57XVT54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "File Creator";
@@ -367,7 +428,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.FinderFileCreator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -382,11 +443,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = FinderFileCreator/FinderFileCreator.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FinderFileCreator/Resources/FinderFileCreator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 48S57XVT54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "File Creator";
@@ -395,7 +456,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.FinderFileCreator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -408,13 +469,13 @@
 		BD4FE8FA2ED906F500240ABD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Exten/Exten.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Extension/Extension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 48S57XVT54;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Exten/Info.plist;
+				INFOPLIST_FILE = Extension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Exten;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -422,7 +483,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.FinderFileCreator.Exten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -436,13 +497,13 @@
 		BD4FE8FB2ED906F500240ABD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Exten/Exten.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Extension/Extension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 48S57XVT54;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Exten/Info.plist;
+				INFOPLIST_FILE = Extension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Exten;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -450,7 +511,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.FinderFileCreator.Exten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
