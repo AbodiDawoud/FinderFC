@@ -7,13 +7,13 @@ import SwiftUI
 
 
 struct ContentView: View {
+    @Environment(TemplateLibrary.self) private var library
+    @State private var isTargeted = false
+
     var body: some View {
         HStack(spacing: 0) {
-            SidebarPaneView()
+            SidebarView()
                 .frame(width: 300)
-                .background {
-                    VisualEffectBlur(material: .sidebar, blendingMode: .behindWindow)
-                }
             
             Rectangle()
                 .fill(Color.black.opacity(0.08))
@@ -23,11 +23,38 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .ignoresSafeArea()
+        .animation(.snappy(duration: 0.2), value: isTargeted)
+        .blur(radius: isTargeted ? 28 : 0)
+        .overlay {
+            if isTargeted {
+                ZStack {
+                    Color.black.opacity(0.4)
+                        .ignoresSafeArea()
+
+                    VStack(spacing: 12) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 60))
+                            .symbolRenderingMode(.hierarchical)
+                        
+                        Text("Drop file to create template")
+                            .font(.title2.bold())
+                            .foregroundStyle(.white)
+                    }
+                }
+            }
+        }
+        .dropDestination(for: URL.self) { items, _ in
+            guard let firstURL = items.first else { return false }
+            library.createTemplate(from: firstURL)
+            return true
+        } isTargeted: {
+            isTargeted = $0
+        }
     }
 }
 
 
-private struct SidebarPaneView: View {
+private struct SidebarView: View {
     @Environment(TemplateLibrary.self) private var library
 
     var body: some View {
@@ -46,8 +73,17 @@ private struct SidebarPaneView: View {
                             template: template,
                             isSelected: library.selectedTemplateID == template.id
                         )
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             library.selectedTemplateID = template.id
+                        }
+                        .onDrag { NSItemProvider(object: template.id.uuidString as NSString) }
+                        .dropDestination(for: String.self) { items, location in
+                            guard let draggedIdString = items.first,
+                                  let draggedId = UUID(uuidString: draggedIdString) else { return false }
+                            
+                            library.moveTemplate(id: draggedId, to: template.id)
+                            return true
                         }
                         .contextMenu {
                             Button("Duplicate") {
@@ -82,8 +118,13 @@ private struct SidebarPaneView: View {
                     .background(.white.opacity(0.001))
                 
                 Spacer()
-
-                Button("", systemImage: "lock.shield", action: FIFinderSyncController.showExtensionManagementInterface)
+                
+                Button(
+                    "", systemImage: library.isExtensionEnabled ? "lock" : "lock.open",
+                    action: FIFinderSyncController.showExtensionManagementInterface
+                )
+                .help("Extension is \(library.isExtensionEnabled ? "enabled" : "disabled")")
+                    
                 
                 Button("", systemImage: "folder", action: revealTemplateStorage)
             }

@@ -38,6 +38,65 @@ final class TemplateLibrary {
         isExtensionEnabled = FIFinderSyncController.isExtensionEnabled
     }
 
+    func createTemplate(from url: URL) {
+        guard let content = try? String(contentsOf: url, encoding: .utf8) else { return }
+        
+        let fileName = url.deletingPathExtension().lastPathComponent
+        let fileExtension = url.pathExtension
+        let title = fileName.isEmpty ? "New Template" : fileName
+        let iconName = icon(for: fileExtension)
+        
+        let newTemplate = TemplateDefinition(
+            title: title,
+            defaultFileName: fileName,
+            fileExtension: fileExtension,
+            content: content,
+            iconAssetName: iconName
+        )
+
+        templates.insert(newTemplate, at: 0)
+        selectedTemplateID = newTemplate.id
+        persist()
+    }
+
+    private func icon(for ext: String) -> String {
+        switch ext.lowercased() {
+        case "swift": return "SwiftLang"
+        case "md": return "MarkdownFile"
+        case "json": return "Json"
+        case "metal": return "metal"
+        case "plist": return "Plist"
+        case "js": return "JavaScript"
+        case "ts": return "TypeScript"
+        case "tsx": return "Tsx"
+        case "jsx": return "Jsx"
+        case "html": return "html"
+        case "css": return "css"
+        case "py": return "Python"
+        case "rb": return "Ruby"
+        case "java": return "Java"
+        case "php": return "Php"
+        case "c": return "c"
+        case "cpp": return "cpp"
+        case "h", "hpp": return "cppHeader"
+        case "m": return "m"
+        case "mm": return "Objective-C"
+        case "sh": return "Shell"
+        case "xml": return "XmlFile"
+        case "yml", "yaml": return "YamlFile"
+        case "sql": return "Sql"
+        case "go": return "GoLang"
+        case "rs": return "Rust"
+        case "dart": return "Dart"
+        case "kt": return "Kotlin"
+        case "cs": return "CsharpLang"
+        case "scala": return "Scala"
+        case "storyboard", "xib": return "StoryboardFile"
+        case "entitlements": return "EntitlementsFile"
+        default: return "TextFile"
+        }
+    }
+
     func addNewTemplate() {
         let newTemplate = TemplateDefinition(
             title: "New Template",
@@ -103,6 +162,21 @@ final class TemplateLibrary {
         guard let selectedTemplateID, let index = templates.firstIndex(where: { $0.id == selectedTemplateID }) else { return }
 
         update(&templates[index])
+        persist()
+    }
+
+    func moveTemplates(fromOffsets source: IndexSet, toOffset destination: Int) {
+        templates.move(fromOffsets: source, toOffset: destination)
+        persist()
+    }
+
+    func moveTemplate(id: TemplateDefinition.ID, to targetID: TemplateDefinition.ID) {
+        guard id != targetID else { return }
+        guard let sourceIndex = templates.firstIndex(where: { $0.id == id }),
+              let destinationIndex = templates.firstIndex(where: { $0.id == targetID }) else { return }
+        
+        let targetOffset = sourceIndex < destinationIndex ? destinationIndex + 1 : destinationIndex
+        templates.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: targetOffset)
         persist()
     }
 

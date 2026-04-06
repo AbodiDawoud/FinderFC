@@ -9,14 +9,13 @@ struct FinderFileCreatorApp: App {
     private var library = TemplateLibrary()
     
     var body: some Scene {
-        WindowGroup {
+        Window("", id: "MainWindow") {
             ContentView()
                 .environment(library)
-                .containerBackground(.thinMaterial, for: .window)
-                .windowMinimizeBehavior(.disabled)
+                .containerBackground(.thickMaterial.materialActiveAppearance(.active), for: .window)
                 .windowFullScreenBehavior(.disabled)
-                //.windowResizeBehavior(.disabled)
-                .frame(minWidth: 850, idealWidth: 920, maxWidth: .infinity, minHeight: 500, idealHeight: 600, maxHeight: .infinity)
+                .preferredColorScheme(.dark)
+                .frame(minWidth: 820, idealWidth: 900, maxWidth: .infinity, minHeight: 460, idealHeight: 560, maxHeight: .infinity)
         }
         .windowResizability(.contentSize)
         .windowStyle(.hiddenTitleBar)
