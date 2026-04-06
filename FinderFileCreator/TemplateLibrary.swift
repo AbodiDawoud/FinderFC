@@ -35,7 +35,9 @@ final class TemplateLibrary {
     }
 
     func refreshExtensionStatus() {
-        isExtensionEnabled = FIFinderSyncController.isExtensionEnabled
+        withAnimation(.spring(response: 0.45, dampingFraction: 0.6)) {
+            isExtensionEnabled = FIFinderSyncController.isExtensionEnabled
+        }
     }
 
     func createTemplate(from url: URL) {

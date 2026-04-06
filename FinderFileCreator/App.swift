@@ -12,7 +12,7 @@ struct FinderFileCreatorApp: App {
         Window("", id: "MainWindow") {
             ContentView()
                 .environment(library)
-                .containerBackground(.thickMaterial.materialActiveAppearance(.active), for: .window)
+                .containerBackground(.thinMaterial.materialActiveAppearance(.active), for: .window)
                 .windowFullScreenBehavior(.disabled)
                 .preferredColorScheme(.dark)
                 .frame(minWidth: 820, idealWidth: 900, maxWidth: .infinity, minHeight: 460, idealHeight: 560, maxHeight: .infinity)

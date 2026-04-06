@@ -64,6 +64,7 @@ private struct SidebarView: View {
                     .padding(.horizontal, 14)
                     .padding(.top, 35)
                     .padding(.bottom, 10)
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
             
             ScrollView {
@@ -102,10 +103,10 @@ private struct SidebarView: View {
                         }
                     }
                 }
-                .padding(.horizontal, 14)
-                .padding(.bottom, 16)
-                .padding(.top, library.isExtensionEnabled ? 40 : 6)
+                .padding(.horizontal, 6)
             }
+            .padding(.bottom, 16)
+            .padding(.top, library.isExtensionEnabled ? 40 : 5)
 
             Divider()
                 .overlay(Color.black.opacity(0.08))
