@@ -7,15 +7,26 @@ import SwiftUI
 @main
 struct FinderFileCreatorApp: App {
     private var library = TemplateLibrary()
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     
     var body: some Scene {
         Window("", id: "MainWindow") {
-            ContentView()
-                .environment(library)
-                .containerBackground(.thinMaterial.materialActiveAppearance(.active), for: .window)
-                .windowFullScreenBehavior(.disabled)
-                .preferredColorScheme(.dark)
-                .frame(minWidth: 820, idealWidth: 900, maxWidth: .infinity, minHeight: 460, idealHeight: 560, maxHeight: .infinity)
+            Group {
+                if hasCompletedOnboarding {
+                    ContentView()
+                        .frame(minWidth: 820, idealWidth: 900, maxWidth: .infinity, minHeight: 460, idealHeight: 560, maxHeight: .infinity)
+                } else {
+                    OnboardingView()
+                        .windowDismissBehavior(.disabled)
+                        .windowResizeBehavior(.disabled)
+                        .windowMinimizeBehavior(.disabled)
+                        .windowFullScreenBehavior(.disabled)
+                        .frame(width: 600, height: 450)
+                }
+            }
+            .environment(library)
+            .containerBackground(.thinMaterial.materialActiveAppearance(.active), for: .window)
+            .preferredColorScheme(.dark)
         }
         .windowResizability(.contentSize)
         .windowStyle(.hiddenTitleBar)

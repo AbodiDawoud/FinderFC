@@ -194,6 +194,53 @@ final class TemplateLibrary {
         persist()
     }
 
+    func applyRoleTemplates(for role: UserRole) {
+        var newTemplates: [TemplateDefinition]
+        switch role {
+        case .apple:
+            newTemplates = [
+                TemplateDefaults.swiftTemplate,
+                TemplateDefaults.metalTemplate,
+                TemplateDefaults.plistTemplate,
+                TemplateDefaults.markdownTemplate,
+                TemplateDefaults.jsonTemplate
+            ]
+        case .web:
+            newTemplates = [
+                TemplateDefaults.htmlTemplate,
+                TemplateDefaults.cssTemplate,
+                TemplateDefaults.jsTemplate,
+                TemplateDefaults.jsonTemplate,
+                TemplateDefaults.markdownTemplate
+            ]
+        case .android:
+            newTemplates = [
+                TemplateDefaults.kotlinTemplate,
+                TemplateDefaults.javaTemplate,
+                TemplateDefaults.xmlTemplate,
+                TemplateDefaults.jsonTemplate,
+                TemplateDefaults.markdownTemplate
+            ]
+        case .general:
+            newTemplates = [
+                TemplateDefaults.textTemplate,
+                TemplateDefaults.markdownTemplate,
+                TemplateDefaults.jsonTemplate
+            ]
+        }
+        
+        // Re-assign IDs to prevent conflicts if we ever recreate them, though not strictly needed.
+        newTemplates = newTemplates.map { t in
+            var copy = t
+            copy.id = UUID()
+            return copy
+        }
+
+        templates = newTemplates
+        selectedTemplateID = newTemplates.first?.id
+        persist()
+    }
+
     private func persist() {
         SharedTemplateStore.save(templates)
     }

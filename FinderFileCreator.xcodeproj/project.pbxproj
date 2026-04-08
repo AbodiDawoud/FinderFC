@@ -17,6 +17,10 @@
 		BD053CEE2F7886F400351FE2 /* SharedTemplateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CED2F7886F400351FE2 /* SharedTemplateStore.swift */; };
 		BD053CF02F78871D00351FE2 /* IconCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CEF2F78871D00351FE2 /* IconCatalog.swift */; };
 		BD4FE8F72ED906F500240ABD /* Exten.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BD4FE8EF2ED906F500240ABD /* Exten.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BD702FC52F85C07900186684 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD702FC42F85C07900186684 /* OnboardingView.swift */; };
+		BD702FC92F85C10400186684 /* TokenBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD702FC82F85C10400186684 /* TokenBarView.swift */; };
+		BD702FCB2F85CDA100186684 /* TemplateDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD702FCA2F85CDA100186684 /* TemplateDefaults.swift */; };
+		BD702FCC2F85CDA100186684 /* TemplateDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD702FCA2F85CDA100186684 /* TemplateDefaults.swift */; };
 		BDE576DC2F799A9700FC8E53 /* TemplateDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CD52F7882B800351FE2 /* TemplateDefinition.swift */; };
 		BDE576DD2F799AA100FC8E53 /* SharedTemplateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CED2F7886F400351FE2 /* SharedTemplateStore.swift */; };
 		BDE576DE2F799AB000FC8E53 /* Extensions+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CE62F7886AB00351FE2 /* Extensions+.swift */; };
@@ -60,6 +64,9 @@
 		BD053CEF2F78871D00351FE2 /* IconCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCatalog.swift; sourceTree = "<group>"; };
 		BD4FE8DC2ED905C500240ABD /* FinderFileCreator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinderFileCreator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD4FE8EF2ED906F500240ABD /* Exten.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Exten.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD702FC42F85C07900186684 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		BD702FC82F85C10400186684 /* TokenBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarView.swift; sourceTree = "<group>"; };
+		BD702FCA2F85CDA100186684 /* TemplateDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -106,6 +113,7 @@
 			children = (
 				BD053CE52F7885E800351FE2 /* Resources */,
 				BD053CE82F7886C100351FE2 /* Models */,
+				BD702FC72F85C0DC00186684 /* Views */,
 				BD053CEB2F7886EC00351FE2 /* TemplateRenderer.swift */,
 				BD053CED2F7886F400351FE2 /* SharedTemplateStore.swift */,
 				BD053CD32F7882B800351FE2 /* TemplateLibrary.swift */,
@@ -130,6 +138,7 @@
 			children = (
 				BD053CD52F7882B800351FE2 /* TemplateDefinition.swift */,
 				BD053CEF2F78871D00351FE2 /* IconCatalog.swift */,
+				BD702FCA2F85CDA100186684 /* TemplateDefaults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -150,6 +159,15 @@
 				BD4FE8EF2ED906F500240ABD /* Exten.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BD702FC72F85C0DC00186684 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BD702FC42F85C07900186684 /* OnboardingView.swift */,
+				BD702FC82F85C10400186684 /* TokenBarView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,11 +280,14 @@
 				BD053CD62F7882B800351FE2 /* App.swift in Sources */,
 				BD053CD72F7882B800351FE2 /* TemplateLibrary.swift in Sources */,
 				BD053CE72F7886AB00351FE2 /* Extensions+.swift in Sources */,
+				BD702FC52F85C07900186684 /* OnboardingView.swift in Sources */,
 				BD053CD82F7882B800351FE2 /* ContentView.swift in Sources */,
 				BD053CEE2F7886F400351FE2 /* SharedTemplateStore.swift in Sources */,
 				BD053CD92F7882B800351FE2 /* TemplateDefinition.swift in Sources */,
 				BD053CF02F78871D00351FE2 /* IconCatalog.swift in Sources */,
+				BD702FCC2F85CDA100186684 /* TemplateDefaults.swift in Sources */,
 				BD053CEC2F7886EC00351FE2 /* TemplateRenderer.swift in Sources */,
+				BD702FC92F85C10400186684 /* TokenBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +297,7 @@
 			files = (
 				BDE576DD2F799AA100FC8E53 /* SharedTemplateStore.swift in Sources */,
 				BDE576DE2F799AB000FC8E53 /* Extensions+.swift in Sources */,
+				BD702FCB2F85CDA100186684 /* TemplateDefaults.swift in Sources */,
 				BDE576DC2F799A9700FC8E53 /* TemplateDefinition.swift in Sources */,
 				BDE576DF2F799ACF00FC8E53 /* TemplateRenderer.swift in Sources */,
 			);
