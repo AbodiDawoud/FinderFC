@@ -207,35 +207,13 @@ final class TemplateLibrary {
         var newTemplates: [TemplateDefinition]
         switch role {
         case .apple:
-            newTemplates = [
-                TemplateDefaults.swiftTemplate,
-                TemplateDefaults.metalTemplate,
-                TemplateDefaults.plistTemplate,
-                TemplateDefaults.markdownTemplate,
-                TemplateDefaults.jsonTemplate
-            ]
+            newTemplates = TemplateDefaults.appleTemplates
         case .web:
-            newTemplates = [
-                TemplateDefaults.htmlTemplate,
-                TemplateDefaults.cssTemplate,
-                TemplateDefaults.jsTemplate,
-                TemplateDefaults.jsonTemplate,
-                TemplateDefaults.markdownTemplate
-            ]
+            newTemplates = TemplateDefaults.webTemplates
         case .android:
-            newTemplates = [
-                TemplateDefaults.kotlinTemplate,
-                TemplateDefaults.javaTemplate,
-                TemplateDefaults.xmlTemplate,
-                TemplateDefaults.jsonTemplate,
-                TemplateDefaults.markdownTemplate
-            ]
+            newTemplates = TemplateDefaults.androidTemplates
         case .general:
-            newTemplates = [
-                TemplateDefaults.textTemplate,
-                TemplateDefaults.markdownTemplate,
-                TemplateDefaults.jsonTemplate
-            ]
+            newTemplates = TemplateDefaults.generalTemplates
         }
         
         // Re-assign IDs to prevent conflicts if we ever recreate them, though not strictly needed.

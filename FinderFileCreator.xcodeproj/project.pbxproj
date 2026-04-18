@@ -16,13 +16,13 @@
 		BD053CEC2F7886EC00351FE2 /* TemplateRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CEB2F7886EC00351FE2 /* TemplateRenderer.swift */; };
 		BD053CEE2F7886F400351FE2 /* SharedTemplateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CED2F7886F400351FE2 /* SharedTemplateStore.swift */; };
 		BD053CF02F78871D00351FE2 /* IconCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CEF2F78871D00351FE2 /* IconCatalog.swift */; };
-		BD354D792F863D8C00B6991B /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = BD354D782F863D8C00B6991B /* CodeEditor */; };
 		BD354D7B2F8657CA00B6991B /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD354D7A2F8657CA00B6991B /* IconPickerView.swift */; };
 		BD4FE8F72ED906F500240ABD /* Exten.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BD4FE8EF2ED906F500240ABD /* Exten.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BD702FC52F85C07900186684 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD702FC42F85C07900186684 /* OnboardingView.swift */; };
 		BD702FC92F85C10400186684 /* TokenBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD702FC82F85C10400186684 /* TokenBarView.swift */; };
 		BD702FCB2F85CDA100186684 /* TemplateDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD702FCA2F85CDA100186684 /* TemplateDefaults.swift */; };
 		BD702FCC2F85CDA100186684 /* TemplateDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD702FCA2F85CDA100186684 /* TemplateDefaults.swift */; };
+		BDDAE01F2F930D41008BD612 /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = BDDAE01E2F930D41008BD612 /* CodeEditor */; };
 		BDE576DC2F799A9700FC8E53 /* TemplateDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CD52F7882B800351FE2 /* TemplateDefinition.swift */; };
 		BDE576DD2F799AA100FC8E53 /* SharedTemplateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CED2F7886F400351FE2 /* SharedTemplateStore.swift */; };
 		BDE576DE2F799AB000FC8E53 /* Extensions+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD053CE62F7886AB00351FE2 /* Extensions+.swift */; };
@@ -70,6 +70,7 @@
 		BD702FC42F85C07900186684 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BD702FC82F85C10400186684 /* TokenBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarView.swift; sourceTree = "<group>"; };
 		BD702FCA2F85CDA100186684 /* TemplateDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDefaults.swift; sourceTree = "<group>"; };
+		BDDAE01D2F930CF2008BD612 /* CodeEditor */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CodeEditor; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -98,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD354D792F863D8C00B6991B /* CodeEditor in Frameworks */,
+				BDDAE01F2F930D41008BD612 /* CodeEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +153,7 @@
 			children = (
 				BD053CE42F7885DE00351FE2 /* FinderFileCreator */,
 				BD4FE8F02ED906F500240ABD /* Extension */,
+				BDDAE01C2F930CF2008BD612 /* Frameworks */,
 				BD4FE8DD2ED905C500240ABD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -175,6 +177,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		BDDAE01C2F930CF2008BD612 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDDAE01D2F930CF2008BD612 /* CodeEditor */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -194,7 +204,7 @@
 			);
 			name = FinderFileCreator;
 			packageProductDependencies = (
-				BD354D782F863D8C00B6991B /* CodeEditor */,
+				BDDAE01E2F930D41008BD612 /* CodeEditor */,
 			);
 			productName = FinderFileCreator;
 			productReference = BD4FE8DC2ED905C500240ABD /* FinderFileCreator.app */;
@@ -248,7 +258,6 @@
 			mainGroup = BD4FE8D32ED905C500240ABD;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				BD354D772F863D8C00B6991B /* XCLocalSwiftPackageReference "CodeEditor" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BD4FE8DD2ED905C500240ABD /* Products */;
@@ -584,15 +593,8 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		BD354D772F863D8C00B6991B /* XCLocalSwiftPackageReference "CodeEditor" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = CodeEditor;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		BD354D782F863D8C00B6991B /* CodeEditor */ = {
+		BDDAE01E2F930D41008BD612 /* CodeEditor */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CodeEditor;
 		};
