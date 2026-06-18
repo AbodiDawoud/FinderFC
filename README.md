@@ -25,5 +25,3 @@ Additionally, the tool also lets you open the current directory in the terminal.
 
 <img width="931" height="715" alt="Screenshot 2026-04-09 at 3 57 54 PM" src="https://github.com/user-attachments/assets/de2b4a0b-814d-4553-af4d-bb72158353b3"/>
 <img width="1114" height="718" alt="Screenshot 2026-04-09 at 3 36 09 PM" src="https://github.com/user-attachments/assets/a625acfc-2e50-458b-9f20-01585f144a76" />
-<img width="944" height="681" alt="Screenshot 2026-04-09 at 4 00 08 PM" src="https://github.com/user-attachments/assets/47dc96d4-7a45-447a-9466-edc58a7f9b99" />
-<img width="1203" height="808" alt="App Preview" src="https://github.com/user-attachments/assets/c6375a77-7c41-441f-a627-0ed50fb657be"/>
