@@ -3,10 +3,14 @@
 //  Extension
 
 import Cocoa
+import Darwin
 import FinderSync
+import os
 
 
 class FinderSync: FIFinderSync {
+    private let copyPathLogger = Logger(subsystem: "com.app.FinderFileCreator.Exten", category: "CopyPath")
+
     override init() {
         super.init()
 
@@ -38,10 +42,50 @@ class FinderSync: FIFinderSync {
 
         parentMenuItem.submenu = submenu
         newMenu.addItem(parentMenuItem)
+        newMenu.addItem(copyPathMenuItem(for: menu, fallbackURL: targetFolder))
         newMenu.addItem(terminalMenuItem(for: targetFolder))
         submenu.addItem(customizeMenuItem)
 
         return newMenu
+    }
+
+    func copyPathMenuItem(for menu: FIMenuKind, fallbackURL: URL) -> NSMenuItem {
+        let item = NSMenuItem(title: "Copy Path", action: #selector(copyPath(_:)), keyEquivalent: "")
+        item.target = self
+        item.representedObject = copyTargetURLs(for: menu, fallbackURL: fallbackURL)
+
+        return item
+    }
+
+    @objc func copyPath(_ sender: NSMenuItem) {
+        let urls = copyTargetURLs(from: sender)
+        guard !urls.isEmpty else {
+            copyPathLogger.error("Copy Path could not resolve a Finder selection")
+            NSApp.showException("Failed to get the selected file URL from FIFinderSyncController.")
+            return NSLog("No file URL to copy")
+        }
+
+        let paths = urls
+            .map(abbreviatedPath(for:))
+            .joined(separator: "\n")
+
+        // Finder Sync runs as a background-only process. Activation is
+        // asynchronous, so let AppKit finish it before claiming the general
+        // pasteboard on the next run-loop turn.
+        NSApp.activate()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [copyPathLogger] in
+            let pasteboard = NSPasteboard.general
+            pasteboard.clearContents()
+
+            guard pasteboard.setString(paths, forType: .string) else {
+                copyPathLogger.error("Copy Path failed to write to the general pasteboard")
+                NSApp.showException("Failed to copy the selected path to the clipboard.")
+                return
+            }
+
+            copyPathLogger.notice("Copy Path wrote \(urls.count, privacy: .public) path(s) to the general pasteboard")
+        }
     }
 
     @objc func createFileFromTemplate(_ sender: NSMenuItem) {
@@ -153,6 +197,51 @@ class FinderSync: FIFinderSync {
     
     private func terminalFolderURL(from sender: NSMenuItem) -> URL? {
         selectedContextFolderURL() ?? folderURL(from: sender)
+    }
+
+    private func copyTargetURLs(for menu: FIMenuKind, fallbackURL: URL) -> [URL] {
+        if menu == .contextualMenuForItems,
+           let selectedURLs = FIFinderSyncController.default().selectedItemURLs(),
+           !selectedURLs.isEmpty {
+            return selectedURLs
+        }
+
+        return [fallbackURL]
+    }
+
+    private func copyTargetURLs(from sender: NSMenuItem) -> [URL] {
+        if let urls = sender.representedObject as? [URL], !urls.isEmpty {
+            return urls
+        }
+
+        if let selectedURLs = FIFinderSyncController.default().selectedItemURLs(), !selectedURLs.isEmpty {
+            return selectedURLs
+        }
+
+        if let targetedURL = FIFinderSyncController.default().targetedURL() {
+            return [targetedURL]
+        }
+
+        return []
+    }
+
+    private func abbreviatedPath(for url: URL) -> String {
+        let path = url.standardizedFileURL.path
+
+        guard
+            let passwordEntry = getpwuid(getuid()),
+            let homeDirectory = passwordEntry.pointee.pw_dir
+        else {
+            return path
+        }
+
+        let homePath = String(cString: homeDirectory)
+        guard path != homePath else { return "~" }
+
+        let homePrefix = homePath.hasSuffix("/") ? homePath : homePath + "/"
+        guard path.hasPrefix(homePrefix) else { return path }
+
+        return "~/" + String(path.dropFirst(homePrefix.count))
     }
 
     private func selectedContextFolderURL() -> URL? {
